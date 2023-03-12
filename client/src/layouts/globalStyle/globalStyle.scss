@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200&family=Roboto:wght@500&family=Tilt+Warp&display=swap');
+
+:root {
+    --font-weight100: 100;
+    --font-weight200: 200;
+    --font-weight300: 400;
+    --font-weight400: 500;
+    --header-bg: linear-gradient(89.96deg, #4E7C32 17.33%, rgba(90, 104, 59, 0.509744) 94.69%, rgba(102, 83, 69, 0) 175.13%);
+    --color-white: #FFFFFF;
+    --color-black: #0B0B0B;
+    --header-height: 15.9rem;
+    --border-rd3: 3px; 
+    --color-border: #E3E3E3;
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    font-size: 62.5%;
+    text-transform: capitalize;
+}
+
+body {
+    font-size: 1.6rem;
+    line-height: 1.5;
+    font-family: 'Poppins', sans-serif; //w100 200
+    font-weight: var(--font-weight200);
+    color: var(--color-white);
+    // font-family: 'Roboto', sans-serif; w500
+    // font-family: 'Tilt Warp', cursive; w400
+}
+
+.wide {
+    max-width: 120rem;
+    width: 100%;
+    margin: 0 auto;
+}
+.grid {
+    display: grid;
+}
+.align-center {
+    align-items: center;
+}
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+a[href] {
+    text-decoration: none;
+    color: var(--color-white);
+}
+.icon {
+    vertical-align: -2.45px;
+    transition: all linear .5s;
+}
