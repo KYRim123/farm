@@ -1,0 +1,76 @@
+.slide{
+    position: relative;
+    overflow: hidden;
+    .slide-list {
+        white-space: nowrap;
+        transition: all 1s ease-in-out;
+    }
+    .slide__item {
+        position: relative;
+        display: inline-block;
+        width: 100%;
+        height: 50rem;
+        background-repeat: no-repeat;
+        background-size: cover;
+        img {
+           height: 100%;
+           width: 100%;
+           object-fit: cover;
+        }
+        .slide-infor {
+            position: absolute;
+            left: 20rem;
+            bottom: 15rem;
+            white-space: normal;
+            h3 {
+                max-width: 65rem;
+                width: 100%;
+                font-size: var(--font-size-title-big);
+                font-family: 'Tilt Warp', cursive;
+                color: var(--color-title);
+            }
+            p{
+                color: var(--color-text-black);
+                margin: 2rem 0;
+            }
+            .btn-detail {
+                border-radius: var(--border-rd3);
+                width: 12rem;
+                padding: 1rem;
+                text-align: center;
+                border: 1px solid var(--color-black);
+                color: var(--color-text-black);
+                font-size: 1.8rem;
+                transition: all .5s ease-in;
+                &:hover {
+                    background-color: var(--color-slideBtnActive);
+                    color: var(--color-text-white);
+                }
+            }
+        }
+    }
+    .button-slider {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        text-align: center;
+        z-index: 2;
+    }
+    .button__item {
+        display: inline-block;
+        margin: 1rem;
+        width: 2rem;
+        height: 2rem;
+        border-radius: 50%;
+        background: transparent;
+        background-color: var(--color-slideBtn);
+        cursor: pointer;
+        &:hover {
+            background-color: var(--color-slideBtnActive);
+        }
+    }
+    .button__item.active {
+        background-color: var(--color-slideBtnActive);
+    }
+}

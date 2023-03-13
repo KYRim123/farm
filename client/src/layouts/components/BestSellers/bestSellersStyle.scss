@@ -1,0 +1,36 @@
+.bestSellers {
+    margin-top: 7.5rem;
+    .title {
+        margin: 0 0 2rem 2rem;
+        font-size: var(--font-size-title-mid);
+        color: var(--color-title);
+        font-family: 'Tilt Warp', cursive;
+    }
+    .bestSellers-container {
+        padding-top: .5rem;
+        background-color: var(--color-white);
+        ul {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            overflow-y: hidden;
+            overflow-x: scroll;
+            li {
+                width: 23.4rem;
+                margin: 0 5rem;
+                transition: all .3s ease-in;
+                &:hover{
+                    transform: translateY(-2rem);
+                }
+                h4, span {
+                    color: var(--color-black);
+                }
+                .price-old {
+                    float: right;
+                    color: var(--color-price);
+                    text-decoration: line-through;
+                }
+            }
+        }
+    }
+}

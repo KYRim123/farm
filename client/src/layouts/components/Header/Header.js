@@ -4,20 +4,70 @@ import { FaSearch } from 'react-icons/fa'
 import { BsChevronDown } from 'react-icons/bs'
 import { VscAccount } from 'react-icons/vsc'
 import { BiShoppingBag } from 'react-icons/bi'
-
 import icons from '../../../assets/icons'
+import TippyC from '../../../components/TippyC/TippyC'
 
 
 
 function Header() {
     const navbar = [
-        { name: 'thắp sáng' },
-        { name: 'phân bón' },
-        { name: 'đất & chất nền' },
-        { name: 'chậu & thùng chứa' },
-        { name: 'máy bơm' },
-        { name: 'Cây & Làm vườn' },
-        { name: 'Thông gió & Điều hòa không khí' },
+        {
+            name: 'thắp sáng', 
+            navLink: [
+                { name: 'đèn tích điện', to: '/' },
+                { name: 'đèn đèn lồng', to: '/' },
+                { name: 'đèn huỳnh quang', to: '/' },
+            ]
+        },
+        { 
+            name: 'phân bón',
+            navLink: [
+                { name: 'phân hữu cơ', to: '/' },
+                { name: 'phân hóa học', to: '/' },
+                { name: 'phân vi sinh', to: '/' },
+            ]
+        
+        },
+        { 
+            name: 'đất & chất nền', 
+            navLink: [
+                { name:'đất sét', to: '/' },
+                { name:'đất cát', to: '/' },
+                { name:'đất đỏ', to: '/' },
+            ]
+        },
+        { 
+            name: 'chậu & thùng chứa',
+            navLink: [
+                { name:'chậu xi măng', to: '/' },
+                { name:'chậu đất sét', to: '/' },
+                { name:'chậu treo', to: '/' },
+            ]
+        },
+        { 
+            name: 'máy bơm',
+            navLink: [
+                { name:'bơm xoắn', to: '/' },
+                { name:'bơm tia', to: '/' },
+                { name:'bơm dạng cánh quạt', to: '/' },
+            ]
+        },
+        { 
+            name: 'Cây & Làm vườn',
+            navLink: [
+                { name:'cây lá nước', to: '/' },
+                { name:'các loại hoa', to: '/' },
+                { name:'cây bóng mát', to: '/' },
+            ]
+        },
+        { 
+            name: 'Thông gió & Điều hòa không khí',
+            navLink: [
+                { name:'Dasin KVF – 1025', to: '/' },
+                { name:'KVF-2460', to: '/' },
+                { name:'KVF-3076', to: '/' },
+            ]
+        },
     ]
 
     return <header className='header'>
@@ -33,17 +83,24 @@ function Header() {
                     </Link>
                 </div>
                 <div className="options flex">
-                    <div className="language">
-                        <span>VN</span>
-                        <BsChevronDown className='icon' />
-                    </div>
-                    <div className="acount">
+                    <TippyC
+                        render={
+                            <button className='button'>ENG</button>
+                        }
+                    >
+                        <div className="language pl-3">
+                            <span>VN</span>
+                            <BsChevronDown className='icon' />
+                        </div>
+                    </TippyC>
+
+                    <div className="account pl-3">
                         <Link to='/account'>
                             <VscAccount className='icon' />
                             <span>account</span>
                         </Link>
                     </div>
-                    <div className="cart">
+                    <div className="cart pl-3">
                         <Link to='/products'>
                             <BiShoppingBag className='icon' />
                             <span>cart</span>
@@ -54,10 +111,19 @@ function Header() {
             <nav className="navbar flex">
                 {
                     navbar.map((nav, index) =>
-                        <div className="navbar--item">
-                            <span>{nav.name}</span>
-                            <BsChevronDown className='icon' />
-                        </div>
+                        <TippyC
+                            key={index}
+                            render={
+                                nav.navLink && nav.navLink.map((navLink, indexNavLink) =>
+                                    <Link key={indexNavLink} to={navLink.to} className='button'>{navLink.name}</Link>
+                                )
+                            }
+                        >
+                            <div className="navbar--item">
+                                <span>{nav.name}</span>
+                                <BsChevronDown className='icon' />
+                            </div>
+                        </TippyC>
                     )
                 }
             </nav>

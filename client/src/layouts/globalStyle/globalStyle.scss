@@ -4,13 +4,23 @@
     --font-weight100: 100;
     --font-weight200: 200;
     --font-weight300: 400;
-    --font-weight400: 500;
+    --font-weight500: 500;
     --header-bg: linear-gradient(89.96deg, #4E7C32 17.33%, rgba(90, 104, 59, 0.509744) 94.69%, rgba(102, 83, 69, 0) 175.13%);
     --color-white: #FFFFFF;
     --color-black: #0B0B0B;
+    --color-text-white: #FFFFFF;
+    --color-text-black: #0B0B0B;
     --header-height: 15.9rem;
     --border-rd3: 3px; 
     --color-border: #E3E3E3;
+    --color-green: #65a040;
+    --color-title: #505F4E;
+    --color-price: rgb(201, 84, 84);
+    --color-slideBtn: #dce0e3;
+    --color-slideBtnActive: #85888a;
+    --font-size-title-big: 3.5rem;
+    --font-size-title-mid: 2.5rem;
+    --color-body: #F8F4F0;
 }
 
 * {
@@ -27,9 +37,10 @@ html {
 body {
     font-size: 1.6rem;
     line-height: 1.5;
-    font-family: 'Poppins', sans-serif; //w100 200
+    // font-family: 'Poppins', sans-serif; //w100 200
     font-weight: var(--font-weight200);
     color: var(--color-white);
+    background-color: var(--color-body);
     // font-family: 'Roboto', sans-serif; w500
     // font-family: 'Tilt Warp', cursive; w400
 }
@@ -42,6 +53,9 @@ body {
 .grid {
     display: grid;
 }
+.block {
+    display: block;
+}
 .align-center {
     align-items: center;
 }
@@ -52,9 +66,23 @@ body {
 }
 a[href] {
     text-decoration: none;
-    color: var(--color-white);
 }
 .icon {
     vertical-align: -2.45px;
     transition: all linear .5s;
+}
+.pl-3 {
+    padding-left: 3rem;
+}
+.button {
+    border: none;
+    background: var(--color-white);
+    color: var(--color-black);
+    font-size: 1.6rem;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    &:hover {
+        background-color: rgb(214, 211, 211);
+    }
 }
