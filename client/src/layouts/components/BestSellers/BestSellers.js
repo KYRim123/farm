@@ -8,7 +8,7 @@ import {Link} from 'react-router-dom'
 function BestSellers() {
   return (
     <div className='bestSellers'>
-        <h2 className="title">bán chạy nhất</h2>
+        <h2 className="title wide">bán chạy nhất</h2>
         <div className="bestSellers-container">
             <ul className='wide'>
                 {

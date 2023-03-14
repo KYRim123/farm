@@ -17,5 +17,13 @@ export const bestSellers = [
     {img: require('./imgbestSellers/img4.png'), name: 'đèn dài', priceNew: 93.85, priceOld: 63.85}
 ]
 
+export const popular = [
+    {img: require('./imgPopular/img1.png'), name: 'xẻng làm vườn'},
+    {img: require('./imgPopular/img2.png'), name: 'cát'},
+    {img: require('./imgPopular/img3.png'), name: 'trồng cây'},
+    {img: require('./imgPopular/img4.png'), name: 'bánh bùn'},
+    {img: require('./imgPopular/img5.png'), name: 'kẹp'},
+]
+
 
 export default slider
