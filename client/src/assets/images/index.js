@@ -25,5 +25,17 @@ export const popular = [
     {img: require('./imgPopular/img5.png'), name: 'kẹp'},
 ]
 
+export const kategorien = [
+    {img: require('./imgKategorien/img1.png'), name: 'thắp sáng', total: 50},
+    {img: require('./imgKategorien/img2.png'), name: 'phân bón', total: 20},
+    {img: require('./imgKategorien/img3.png'), name: 'đất & chất nền', total: 40},
+    {img: require('./imgKategorien/img4.png'), name: 'thủy lợi', total: 30},
+    {img: require('./imgKategorien/img5.png'), name: 'chậu & thùng chứa', total: 20},
+    {img: require('./imgKategorien/img6.png'), name: 'phát triển hộp', total: 40},
+    {img: require('./imgKategorien/img7.png'), name: 'Cây & Làm vườn', total: 23},
+    {img: require('./imgKategorien/img8.png'), name: 'Thông gió & Điều hòa không khí', total: 10},
+ ]
+
+ export const imgPay = require('./imgPay.png')
 
 export default slider

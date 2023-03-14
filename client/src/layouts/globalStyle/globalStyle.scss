@@ -3,11 +3,12 @@
 :root {
     --font-weight100: 100;
     --font-weight200: 200;
-    --font-weight300: 400;
+    --font-weight400: 400;
     --font-weight500: 500;
     --header-bg: linear-gradient(89.96deg, #4E7C32 17.33%, rgba(90, 104, 59, 0.509744) 94.69%, rgba(102, 83, 69, 0) 175.13%);
     --color-white: #FFFFFF;
     --color-black: #0B0B0B;
+    --color-text-body: #F9F3EE;
     --color-text-white: #FFFFFF;
     --color-text-black: #0B0B0B;
     --header-height: 15.9rem;
@@ -22,6 +23,9 @@
     --font-size-title-big: 3.5rem;
     --font-size-title-mid: 2.5rem;
     --color-body: #F8F4F0;
+    --color-line: #968e8e;
+    --color-footer: #053D29;
+    --color-footer2: #062F21;
 }
 
 * {
@@ -40,7 +44,7 @@ body {
     line-height: 1.5;
     // font-family: 'Poppins', sans-serif; //w100 200
     font-weight: var(--font-weight200);
-    color: var(--color-white);
+    color: var(--color-text-body);
     background-color: var(--color-body);
     // font-family: 'Roboto', sans-serif; w500
     // font-family: 'Tilt Warp', cursive; w400
@@ -86,4 +90,16 @@ a[href] {
     &:hover {
         background-color: rgb(214, 211, 211);
     }
+}
+.title {
+    font-size: var(--font-size-title-mid);
+    color: var(--color-title);
+    font-family: 'Tilt Warp', cursive;
+}
+.line {
+    margin: 2rem 0;
+    display: block;
+    width: 100%;
+    background-color: var(--color-line);
+    height: 1px;
 }

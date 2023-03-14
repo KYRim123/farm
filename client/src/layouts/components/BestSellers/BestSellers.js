@@ -9,6 +9,7 @@ function BestSellers() {
   return (
     <div className='bestSellers'>
         <h2 className="title wide">bán chạy nhất</h2>
+        <span className="line"></span>
         <div className="bestSellers-container">
             <ul className='wide'>
                 {

@@ -1,0 +1,30 @@
+.kategorien {
+    margin-top: 7.5rem;
+    position: relative;
+    z-index: 1;
+}
+.kategorien-container{
+    height: 63rem;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    column-gap: 2rem;
+    row-gap: 1rem;
+    .item {
+        border-radius: var(--border-rd3);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+         .detail {
+            margin-top: 1rem;
+            padding-right: 2rem;
+            background:  linear-gradient(91.94deg, rgba(255, 255, 255, 0.5) 0.8%, rgba(255, 255, 255, 0.3815) 63.3%, rgba(255, 255, 255, 0) 98.92%);
+            text-align: end;
+        }
+        h4, p {
+            color: var(--color-text-black);
+        }
+        h4{
+             font-size: var(--font-size-title-mid);
+        }
+    }
+}

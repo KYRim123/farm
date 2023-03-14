@@ -1,0 +1,27 @@
+.footer {
+    background-color: var(--color-footer);
+}
+.footer-container {
+    padding-top: 2rem;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 5rem;
+    .column {
+        p {
+            line-height: 4rem;
+        }
+    }
+    .column1 {
+        margin-top: 3rem;
+    }
+ }
+ .list-icon {
+    .icon {
+        color: var(--color-white);
+        margin-right: 3rem;
+    }
+}
+.other {
+    padding: 1rem 0;
+    background-color: var(--color-footer2);
+    justify-content: space-around;
+}

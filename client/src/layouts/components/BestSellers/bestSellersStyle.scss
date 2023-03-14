@@ -1,11 +1,5 @@
 .bestSellers {
     margin-top: 7.5rem;
-    .title {
-        padding-bottom: 1rem;
-        font-size: var(--font-size-title-mid);
-        color: var(--color-title);
-        font-family: 'Tilt Warp', cursive;
-    }
     .bestSellers-container {
         height: 33.2rem;
         padding-top: .5rem;
@@ -21,11 +15,11 @@
                 width: 23.4rem;
                 margin: 0 5rem;
                 transition: all .3s ease-in;
-                &:hover{
+                 &:hover{
                     transform: translateY(-2rem);
                 }
                 h4, span {
-                    color: var(--color-black);
+                    color: var(--color-text-black);
                 }
                 .price-old {
                     float: right;

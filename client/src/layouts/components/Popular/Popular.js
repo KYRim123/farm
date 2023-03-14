@@ -10,7 +10,7 @@ function Popular() {
       <div className="popular-container grid">
             {
                 popular.map((item, index) => 
-                    <Link key={index} className={`item item-${index + 1}`} style={{backgroundImage: `url(${item.img})`}}>
+                    <Link key={index} to="/" className={`item item-${index + 1}`} style={{backgroundImage: `url(${item.img})`}}>
                         <h4>{item.name}</h4>
                     </Link>
                 )
