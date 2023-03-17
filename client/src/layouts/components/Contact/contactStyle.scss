@@ -1,5 +1,6 @@
 .contact {
     position: relative;
+    overflow: hidden;
 }
 .contact-bg {
     height: 30rem;
@@ -17,7 +18,7 @@
 
 }
 .sendMail{
-     align-items: center;
+    align-items: center;
     justify-content: space-between; 
     flex-wrap: wrap;
     p {
@@ -34,7 +35,7 @@
         border-radius: var(--border-rd3);
         .icon-mail {
             padding: 0.5rem 1rem;
-            margin: 0 1rem;
+            margin: 1rem;
             background-color: #F8F8F8;
             .icon {
                 color: #6C777C;

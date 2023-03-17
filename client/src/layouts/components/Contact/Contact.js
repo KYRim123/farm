@@ -11,13 +11,13 @@ function Contact() {
                 <h2 className='title'>Liên hệ với chúng tôi</h2>
                 <div className='sendMail flex'>
                     <p>Nhận cập nhật hàng tuần về sản phẩm của chúng tôi trên email của bạn, chúng tôi cam kết không có thư rác.</p>
-                    <div className="sendMail-input flex">
+                    <form className="sendMail-input flex">
                         <div className='icon-mail'>
                             <GrMail className='icon'/>
                         </div>
-                        <input type="text" />
-                        <button className='button'>Gửi Mail</button>
-                    </div>
+                        <input required={true} type="text" placeholder='Nhập email của bạn ở đây'/>
+                        <input type='submit' className='button' value='Gửi Mail'/>
+                    </form>
                 </div>
             </div>
         </div>

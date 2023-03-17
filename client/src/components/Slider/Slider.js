@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import {Link} from 'react-router-dom'
+import {backgr} from '../../assets/images'
 import slider from '../../assets/images'
 import './sliderStyle.scss'
 
@@ -30,7 +31,7 @@ function Slider() {
                         <li
                             key={index}
                             className='slide__item'
-                            style={{ backgroundImage: `url(${slider.slide1})` }}
+                            style={{ backgroundImage: `url(${backgr})` }}
                         >
                             <img src={item} alt="a" />
                             <div className='slide-infor'>

@@ -50,6 +50,7 @@
         }
         .language {
             cursor: pointer;
+            color: var(--color-text-white);
             &:hover .icon{
                 transform: rotate(-180deg);
             }
@@ -61,16 +62,4 @@
         }
     }
 }
-.navbar {
-    padding-top: 2rem;
-    justify-content: space-between;
-    .navbar--item {
-        cursor: pointer;
-        &:hover .icon{
-                transform: rotate(-180deg);
-        }
-        span {
-            padding-right: 0.5rem;
-        }
-    }
-}
+

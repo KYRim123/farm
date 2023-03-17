@@ -18,7 +18,7 @@ function BestSellers() {
                       <Link href="/">
                         <img src={item.img} alt="imgBest" />
                         <h4>{item.name}</h4>
-                        <div>
+                        <div className='price'>
                           <span className='price-new'>${item.priceNew}</span>
                           <span className='price-old'>${item.priceOld}</span>
                         </div>
