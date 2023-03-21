@@ -4,17 +4,18 @@ import { BiSkipNextCircle } from 'react-icons/bi'
 import { AiOutlineShoppingCart, AiFillHeart } from 'react-icons/ai'
 import './productsStyle.scss'
 import { useEffect, useState } from "react"
-import {fetchProduct} from '../../assets/API'
+ import {useDispatch, useSelector} from 'react-redux'
+import {getProducts} from '../../redux/action'
 
 function Products() {
-  const [products, setProducts] = useState([])
+  const products = useSelector(state => state.productReducers.listProducts)
+  const dispatch = useDispatch()
 
   useEffect(() => {
-    fetchProduct
-      .then(res => setProducts(res.data))
-      .catch(err => console.log(err))
-  }, [])
+    dispatch(getProducts.getProductsRequest())
+  }, [dispatch])
 
+ 
   return (
     <div className='products'>
       <div className="title-products" style={{ backgroundImage: `url(${backgr})` }}>
