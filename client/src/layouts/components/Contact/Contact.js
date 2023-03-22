@@ -15,7 +15,7 @@ function Contact() {
                         <div className='icon-mail'>
                             <GrMail className='icon'/>
                         </div>
-                        <input required={true} type="text" placeholder='Nhập email của bạn ở đây'/>
+                        <input required={true} type="email" placeholder='Nhập email của bạn ở đây'/>
                         <input type='submit' className='button' value='Gửi Mail'/>
                     </form>
                 </div>

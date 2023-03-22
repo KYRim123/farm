@@ -1,21 +1,24 @@
 import { Link } from "react-router-dom"
 import { backgr, adver } from '../../assets/images'
 import { BiSkipNextCircle } from 'react-icons/bi'
-import { AiOutlineShoppingCart, AiFillHeart } from 'react-icons/ai'
+import { AiTwotoneShopping } from 'react-icons/ai'
 import './productsStyle.scss'
 import { useEffect, useState } from "react"
- import {useDispatch, useSelector} from 'react-redux'
-import {getProducts} from '../../redux/action'
+import { useDispatch, useSelector } from 'react-redux'
+import { getProducts } from '../../redux/action'
+import { productsSelector, currentPageProducts} from "../../redux/selector"
+import Pagination from "../../layouts/components/Pagination/Pagination"
+
 
 function Products() {
-  const products = useSelector(state => state.productReducers.listProducts)
+  const products = useSelector(productsSelector)
+  const currentPage = useSelector(currentPageProducts)
+
   const dispatch = useDispatch()
-
   useEffect(() => {
-    dispatch(getProducts.getProductsRequest())
-  }, [dispatch])
+    dispatch(getProducts.getProductsRequest(currentPage))
+  }, [dispatch, currentPage])  
 
- 
   return (
     <div className='products'>
       <div className="title-products" style={{ backgroundImage: `url(${backgr})` }}>
@@ -36,39 +39,41 @@ function Products() {
             <label>show: </label>
             <select name="default" className="sortby">
               <option value="">Default</option>
-              <option value="">aaa2</option>
-              <option value="">aaa3</option>
-              <option value="">aaa4</option>
-            </select>
+              <option value="">Giá từ cao đến thấp</option>
+              <option value="">Giá từ thấp đến cao</option>
+             </select>
           </div>
         </div>
 
         <div className="products-wrapper flex" >
-          <div className="products-item" >
-            <ul className="grid">
+          {/* danh sách sản phẩm */}
+          <div className="products-container" >
+            <ul className="grid products-list">
               {
-                products.map((item, index) =>
-                  <li key={index}>
-                    <img src={item.image} alt="" />
-                    <h4 className="products-item--name">{item.name}</h4>
-                    <div className="list--button">
-                      <div to="/" className="item">
-                        <AiFillHeart className="icon" />
+                products.map((product, index) =>
+                  <li key={index} className="products__item">
+                    <div style={{backgroundImage: `url(${product.image})`}} className="products__item--img"></div>
+                    <div className="detail">
+                      <h4>{product.name}</h4>
+                      <p>mo ta san pham</p>
+                      <div>
+                        <span>$ {product.priceNew}</span>
+                        <div className="icon">
+                          <AiTwotoneShopping style={{verticalAlign: '-.3rem'}}/>
+                        </div>
                       </div>
-                      <div to="/" className="item">
-                        <AiOutlineShoppingCart className="icon" />
-                      </div>
-                    </div>
-                    <div className="price flex">
-                      <label className="price-new">$ {item.priceNew}</label>
-                      <label className="price-old">$ {item.priceOld}</label>
                     </div>
                   </li>
                 )
               }
             </ul>
+            {/* phan trang */}
+          <div className="pagination">
+              <Pagination
+              currentPage={currentPage} 
+              />
           </div>
-
+          </div>
           <div className="products-kategorien">
             <h4 className="title">Xếp loại</h4>
             <ul className="list-checkbox">

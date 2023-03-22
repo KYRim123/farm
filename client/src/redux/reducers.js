@@ -1,6 +1,6 @@
 import {INIT_STATE} from './constant'
 import {combineReducers} from 'redux'
-import {getTypeActions, getProducts} from './action'
+import {getTypeActions, getProducts, handleCurrentPage} from './action'
 
 export  function productReducers(state = INIT_STATE.products, action) {
     switch(action.type) 
@@ -13,6 +13,7 @@ export  function productReducers(state = INIT_STATE.products, action) {
             }
             case getTypeActions(getProducts.getProductsSuccess): {
                 return {
+                    ...state,
                     listProducts: action.payload,
                     isLoading: false
                 }

@@ -5,7 +5,7 @@ export const getTypeActions = (reduxActions) => {
 }
 //action for page products
 export const getProducts = createActions({
-    getProductsRequest: undefined,
+    getProductsRequest: (payload => payload),
     getProductsSuccess: (payload => payload),
     getProductsFailure: (err => err),
 })

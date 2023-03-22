@@ -2,7 +2,7 @@ import { productModel } from "../Models/product.js"
 
  class ProductController{
     getProduct(req, res, next) {
-         productModel.find({})
+         productModel.find({}).limit(12).skip((req.query.page-1) * 12)
             .then(product => res.status(200).json(product))
             .catch(next)
     }
