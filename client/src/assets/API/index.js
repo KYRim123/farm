@@ -1,6 +1,9 @@
 import axios from 'axios'
 
-const URI = "http://localhost:4000"
+const URL = "http://localhost:4000"
 
-export const fetchProducts = (currentPage) => axios.get(`${URI}/products?page=${currentPage}`)
-
+export const fetchProducts = (payload) => {
+    let newURL = `${URL}/products?page=${payload.currentPage}`
+    payload.classify.forEach(cly => {newURL += `&classify=${cly}`})
+    return axios.get(newURL)
+}

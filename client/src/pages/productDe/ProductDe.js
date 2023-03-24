@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react'
+import React, {useState } from 'react'
 import { RxMinus } from 'react-icons/rx'
 import { RiAddFill } from 'react-icons/ri'
 import { AiFillStar } from 'react-icons/ai'

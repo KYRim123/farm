@@ -20,6 +20,10 @@ const productSchema = new Schema({
         type: String,
         require: true
     },
+    typePot: {
+        type: String,
+        require: true
+    },
 }, {timestamps: true})
 
 export const productModel = mongoose.model('products', productSchema)

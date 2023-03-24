@@ -5,19 +5,32 @@ import { AiTwotoneShopping } from 'react-icons/ai'
 import './productsStyle.scss'
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from 'react-redux'
-import { getProducts } from '../../redux/action'
-import { productsSelector, currentPageProducts} from "../../redux/selector"
-import Pagination from "../../layouts/components/Pagination/Pagination"
+import { getProducts, getClassify, changeClassify } from '../../redux/action'
+import { productsSelector, classifySelector } from "../../redux/selector"
+import ReactPaginate from 'react-paginate';
 
 
 function Products() {
-  const products = useSelector(productsSelector)
-  const currentPage = useSelector(currentPageProducts)
-
   const dispatch = useDispatch()
+  const products = useSelector(productsSelector)
+  const classify = useSelector(classifySelector)
+  const [currentPage, setCurrentPage] = useState(1)
+  
+  
   useEffect(() => {
-    dispatch(getProducts.getProductsRequest(currentPage))
-  }, [dispatch, currentPage])  
+    dispatch(getProducts.getProductsRequest({currentPage, classify}))
+  }, [dispatch, currentPage, classify, products])
+
+  const handlePageClick = (e) => {
+    setCurrentPage(e.selected + 1)
+  }
+
+  const handleSelectClassify = (e) => {
+    e.target.checked === true ? 
+    dispatch(getClassify.getClassifyRequest(e.target.value)) : 
+    dispatch(changeClassify.changeClassifyRequest(e.target.value))
+    }
+ 
 
   return (
     <div className='products'>
@@ -29,19 +42,17 @@ function Products() {
           <div className="options-item">
             <label>sort by: </label>
             <select name="newest" className="sortby">
-              <option value="">New Item</option>
-              <option value="">aaa2</option>
-              <option value="">aaa3</option>
-              <option value="">aaa4</option>
+              <option value="">Default</option>
+              <option value="">Giá từ cao đến thấp</option>
+              <option value="">Giá từ thấp đến cao</option>
             </select>
           </div>
           <div className="options-item">
             <label>show: </label>
             <select name="default" className="sortby">
               <option value="">Default</option>
-              <option value="">Giá từ cao đến thấp</option>
-              <option value="">Giá từ thấp đến cao</option>
-             </select>
+              <option value="">Mới</option>
+            </select>
           </div>
         </div>
 
@@ -52,14 +63,14 @@ function Products() {
               {
                 products.map((product, index) =>
                   <li key={index} className="products__item">
-                    <div style={{backgroundImage: `url(${product.image})`}} className="products__item--img"></div>
+                    <div style={{ backgroundImage: `url(${product.image})` }} className="products__item--img"></div>
                     <div className="detail">
                       <h4>{product.name}</h4>
                       <p>mo ta san pham</p>
                       <div>
                         <span>$ {product.priceNew}</span>
                         <div className="icon">
-                          <AiTwotoneShopping style={{verticalAlign: '-.3rem'}}/>
+                          <AiTwotoneShopping style={{ verticalAlign: '-.3rem' }} />
                         </div>
                       </div>
                     </div>
@@ -68,29 +79,36 @@ function Products() {
               }
             </ul>
             {/* phan trang */}
-          <div className="pagination">
-              <Pagination
-              currentPage={currentPage} 
+            <div className="pagination-wrapper">
+              <ReactPaginate
+                breakLabel="..."
+                nextLabel=">"
+                previousLabel="<"
+                onPageChange={handlePageClick}
+                pageRangeDisplayed={3}
+                pageCount={5}
+                renderOnZeroPageCount={null}
+                activeClassName={'pagination--active'}
+                previousClassName={"previous"}
+                nextClassName={"next "}
+                containerClassName={'pagination'}
+                pageClassName={'pagination-page'}
               />
-          </div>
+            </div>
           </div>
           <div className="products-kategorien">
             <h4 className="title">Xếp loại</h4>
             <ul className="list-checkbox">
               <li>
-                <input type="checkbox" />
-                <label>chậu góc</label>
-              </li>
-              <li>
-                <input type="checkbox" />
+                <input value="circle" type="checkbox" onChange={handleSelectClassify} />
                 <label>chậu tròn</label>
               </li>
               <li>
-                <input type="checkbox" />
+                <input value="square" type="checkbox" onChange={handleSelectClassify} />
                 <label>chậu vuông</label>
               </li>
               <li>
-                <input type="checkbox" />
+                <input value="rectangle" type="checkbox" onChange={handleSelectClassify} />
                 <label>chậu chữ nhật</label>
               </li>
             </ul>
