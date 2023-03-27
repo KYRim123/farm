@@ -1,18 +1,25 @@
 import { productModel } from "../Models/product.js"
-class ProductController {
 
+class ProductController {
    getProduct(req, res, next) {
       const page = req.query.page
       const limit = 12
       const allClassify = ['circle', 'rectangle', 'square']
+
       let classify = req.query.classify || 'All'
-   
-      classify === 'All' ? (classify = [...allClassify]) : 
-      (typeof classify === 'string' ? classify = req.query.classify.split(","): classify = req.query.classify);
-      
-       productModel.find({}).where('typePot').in([...classify]).limit(limit).skip((page - 1) * limit)
-         .then(product => res.status(200).json(product))
-         .catch(next)
+      classify === 'All' ? (classify = [...allClassify]) :
+         (typeof classify === 'string' ? classify = req.query.classify.split(",") : classify = req.query.classify);
+
+      const countPage = productModel.find().countDocuments()
+         .then(count => Math.ceil(count/limit))
+         .catch(error => error)
+
+      const getProducts = productModel.find({}).where('typePot').in([...classify]).limit(limit).skip((page - 1) * limit)
+         .then(products => products)
+         .catch(error => error)
+
+      Promise.all([countPage, getProducts])
+         .then(values => res.status(200).json({ countPage: values[0], products: values[1] }))
    }
 
    detail(req, res, next) {

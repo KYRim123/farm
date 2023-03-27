@@ -14,8 +14,9 @@ export  function productReducers(state = INIT_STATE.products, action) {
             case getTypeActions(getProducts.getProductsSuccess): {
                  return {
                     ...state,
-                    listProducts: action.payload,
-                    isLoading: false
+                    listProducts: action.payload.products,
+                    isLoading: false,
+                    countPage: action.payload.countPage,
                 }
             }
             case getTypeActions(getProducts.getProductsFailure): {

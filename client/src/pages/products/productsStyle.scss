@@ -49,9 +49,10 @@
 .pagination-wrapper {
     .pagination {
         display: flex;
-        justify-content: space-around;
+        justify-content: center;
         align-items: center;
         width: 50rem;
+        gap: 1rem;
         margin: 2rem auto 0;
     }
     .pagination-page, .next, .previous {

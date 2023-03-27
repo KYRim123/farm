@@ -3,5 +3,6 @@ export const INIT_STATE = {
         isLoading: false,
         listProducts: [],
         classify: [],
+        countPage: 1,
     }
 }

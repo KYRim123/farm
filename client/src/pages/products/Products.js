@@ -14,9 +14,9 @@ function Products() {
   const dispatch = useDispatch()
   const products = useSelector(productsSelector)
   const classify = useSelector(classifySelector)
+  const countPage = useSelector(state => state.productReducers.countPage)
   const [currentPage, setCurrentPage] = useState(1)
-  
-  
+
   useEffect(() => {
     dispatch(getProducts.getProductsRequest({currentPage, classify}))
   }, [dispatch, currentPage, classify])
@@ -86,7 +86,7 @@ function Products() {
                 previousLabel="<"
                 onPageChange={handlePageClick}
                 pageRangeDisplayed={3}
-                pageCount={5}
+                pageCount={countPage}
                 renderOnZeroPageCount={null}
                 activeClassName={'pagination--active'}
                 previousClassName={"previous"}
