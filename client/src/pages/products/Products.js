@@ -15,11 +15,12 @@ function Products() {
   const products = useSelector(productsSelector)
   const classify = useSelector(classifySelector)
   const countPage = useSelector(state => state.productReducers.countPage)
+  const [sortBy, setSortBy] = useState("default")
   const [currentPage, setCurrentPage] = useState(1)
 
   useEffect(() => {
-    dispatch(getProducts.getProductsRequest({currentPage, classify}))
-  }, [dispatch, currentPage, classify])
+    dispatch(getProducts.getProductsRequest({currentPage, classify, sortBy}))
+  }, [dispatch, currentPage, classify, sortBy])
 
   const handlePageClick = (e) => {
     setCurrentPage(e.selected + 1)
@@ -31,6 +32,9 @@ function Products() {
     dispatch(changeClassify.changeClassifyRequest(e.target.value))
   }
  
+  const selectSortBy = (e) => {
+    setSortBy(e.target.value);
+  }
 
   return (
     <div className='products'>
@@ -41,10 +45,10 @@ function Products() {
         <div className="options flex">
           <div className="options-item">
             <label>sort by: </label>
-            <select name="newest" className="sortby">
-              <option value="">Default</option>
-              <option value="">Giá từ cao đến thấp</option>
-              <option value="">Giá từ thấp đến cao</option>
+            <select name="newest" className="sortby" onChange={selectSortBy}>
+              <option value="default">Default</option>
+              <option value="desc">Giá từ cao đến thấp</option>
+              <option value="asc">Giá từ thấp đến cao</option>
             </select>
           </div>
           <div className="options-item">

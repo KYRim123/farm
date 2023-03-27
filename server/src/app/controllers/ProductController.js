@@ -5,16 +5,21 @@ class ProductController {
       const page = req.query.page
       const limit = 12
       const allClassify = ['circle', 'rectangle', 'square']
-
+      const sortBy = req.query.sortBy
       let classify = req.query.classify || 'All'
+
       classify === 'All' ? (classify = [...allClassify]) :
-         (typeof classify === 'string' ? classify = req.query.classify.split(",") : classify = req.query.classify);
+         (typeof classify === 'string' ? classify = req.query.classify.split() : classify = req.query.classify);  
 
       const countPage = productModel.find().countDocuments()
-         .then(count => Math.ceil(count/limit))
+         .then(count => Math.ceil(count / limit))
          .catch(error => error)
 
-      const getProducts = productModel.find({}).where('typePot').in([...classify]).limit(limit).skip((page - 1) * limit)
+      const getProducts = productModel.find({})
+         .where('typePot')
+         .in([...classify])
+         .limit(limit).skip((page - 1) * limit)
+         .sort(sortBy !== "default" ? { priceNew: sortBy } : {})
          .then(products => products)
          .catch(error => error)
 
