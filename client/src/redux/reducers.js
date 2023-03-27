@@ -27,7 +27,7 @@ export  function productReducers(state = INIT_STATE.products, action) {
             case getTypeActions(getClassify.getClassifySuccess): {
                 return {
                     ...state,
-                    classify: [...state.classify,action.payload]
+                    classify: [...state.classify, action.payload]
                 }
             }
             case getTypeActions(changeClassify.changeClassifySuccess): {

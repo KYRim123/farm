@@ -5,7 +5,7 @@ import { AiTwotoneShopping } from 'react-icons/ai'
 import './productsStyle.scss'
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from 'react-redux'
-import { getProducts, getClassify, changeClassify } from '../../redux/action'
+import { getProducts, getClassify, changeClassify} from '../../redux/action'
 import { productsSelector, classifySelector } from "../../redux/selector"
 import ReactPaginate from 'react-paginate';
 
@@ -19,7 +19,7 @@ function Products() {
   
   useEffect(() => {
     dispatch(getProducts.getProductsRequest({currentPage, classify}))
-  }, [dispatch, currentPage, classify, products])
+  }, [dispatch, currentPage, classify])
 
   const handlePageClick = (e) => {
     setCurrentPage(e.selected + 1)
@@ -29,7 +29,7 @@ function Products() {
     e.target.checked === true ? 
     dispatch(getClassify.getClassifyRequest(e.target.value)) : 
     dispatch(changeClassify.changeClassifyRequest(e.target.value))
-    }
+  }
  
 
   return (

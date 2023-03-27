@@ -4,9 +4,8 @@ export const classifySelector = state => state.productReducers.classify
  
 export const productsSelector = createSelector(
     listProducts, 
-    classifySelector,
-    (products, classify) => {
-        return products.filter(product => classify.length > 0 ? classify.includes(product.typePot) : true)
+    (products) => {
+        return products
 })
 
 
