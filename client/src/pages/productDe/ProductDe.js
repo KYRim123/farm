@@ -1,53 +1,63 @@
-import React, {useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { RxMinus } from 'react-icons/rx'
 import { RiAddFill } from 'react-icons/ri'
 import { AiFillStar } from 'react-icons/ai'
+import {Link, useSearchParams} from 'react-router-dom'
+import {fetchProductsDetail} from '../../assets/API'
 import './productDeStyle.scss'
 
 function ProductDe() {
     const [total, setTotal] = useState(1)
-
+    const [searchParams, setSearchParams] = useSearchParams();
+    const [data, setData] = useState({})
     const minus = () => {
         total > 1 ? setTotal(total => total - 1) : setTotal(1)
     }
 
     const addTotal = () => {
-        total >= 1 ? setTotal(total => total + 1) : console.log('add total');
+        setTotal(total => total + 1)
     }
 
-    console.log(total);
+    useEffect(() => {
+        const idProduct = searchParams.get('id')
+        fetchProductsDetail(idProduct)
+            .then(res => setData(res.data))
+            .catch(() => console.log("fetch product is failure!"))
+    }, [])
+
     return (
-        <div className='productDetail'>
+        data && <div className='productDetail'>
             <div className="wrapper wide">
                 <div className="product flex">
                     <div className="show-img">
-                        <img src="https://res.cloudinary.com/decuwkb48/image/upload/v1679059411/products/img5_kkb68f.png" alt="img" className="img-main" />
+                        <img src={data.image} alt="img" className="img-main" />
                         <div className="img-others">
-                            <img src="https://res.cloudinary.com/decuwkb48/image/upload/v1679059411/products/img5_kkb68f.png" alt="img" />
-                            <img src="https://res.cloudinary.com/decuwkb48/image/upload/v1679059411/products/img5_kkb68f.png" alt="img" />
-                            <img src="https://res.cloudinary.com/decuwkb48/image/upload/v1679059411/products/img5_kkb68f.png" alt="img" />
+                            <img className='active' src={data.image} alt="img" />
+                            <img src={data.image} alt="img" />
+                            <img src={data.image} alt="img" />
                         </div>
                     </div>
 
                     <div className="information">
                         <span>plant</span>
-                        <h3 className="title">Chậu trồng cây vuông 0,27 đến 2 lít</h3>
+                        <h3 className="title">{data.name}</h3>
                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting
                             industry. Lorem Ipsum has been the industry's standard dummy
                             text ever since the
                         </p>
-                        <div className="price-new">$125.00</div>
-                        <div className='discount'>50%</div>
+                        <div className='flex' style={{ alignItems: 'center' }}>
+                            <div className="price-new">$ {data.priceNew}.00</div>
+                            <div className='discount'>50%</div>
+                        </div>
                         <div className="price-old">$250.00</div>
-                        <div className="flex">
-                            <div className="total">
-                                <div onClick={() => { minus() }}><RxMinus /></div>
-                                <span>{total}</span>
-                                <div onClick={() => { addTotal() }}><RiAddFill /></div>
-                            </div>
+                        <div className="total flex">
+                            <div onClick={() => { minus() }}><RxMinus className='icon'/></div>
+                            <span>{total}</span>
+                            <div onClick={() => { addTotal() }}><RiAddFill className='icon'/></div>
                         </div>
                     </div>
                 </div>
+
                 <div className="detail">
                     <div className="description">
                         <h4 className="title">Mô tả</h4>
@@ -64,67 +74,56 @@ function ProductDe() {
                         </p>
                     </div>
                     <div className="evaluate">
-                        <div className="wrapper">
-                            <img src="https://res.cloudinary.com/decuwkb48/image/upload/v1679059411/products/img5_kkb68f.png" alt="" />
+                        <div className="wrapper flex" style={{alignItems: 'center'}}>
+                            <img src={data.image} alt="" />
                             <div className="star">
-                                <div className="star-5">
-                                    1 <AiFillStar />(199)
+                                <div className="star-5 start__item">
+                                    <span>5</span>
+                                    <AiFillStar className='icon'/>
+                                    <span>(199)</span>
+                                    
                                 </div>
-                                <div className="star-4">
-                                    1 <AiFillStar />(99)
+                                <div className="star-4 start__item">
+                                    <span>4</span>
+                                    <AiFillStar className='icon'/>
+                                    <span>(99)</span>
+                                    
                                 </div>
-                                <div className="star-3">
-                                    1 <AiFillStar /> (19)
+                                <div className="star-3 start__item">
+                                    <span>3</span>
+                                    <AiFillStar className='icon'/>
+                                    <span>(19)</span>
+                                     
                                 </div>
-                                <div className="star-2">
-                                    1 <AiFillStar />(9)
+                                <div className="star-2 start__item">
+                                    <span>2</span>
+                                    <AiFillStar className='icon'/>
+                                    <span>(9)</span>
+                                    
                                 </div>
-                                <div className="star-1">
-                                    1 <AiFillStar />(1)
+                                <div className="star-1 start__item">
+                                    <span>1</span>
+                                    <AiFillStar className='icon'/>
+                                    <span>(1)</span>
+                                    
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div className="button2">Đánh giá</div>
-                    <h5 className="title">Bình Luận</h5>
+                    <div className="button2"> Viết Đánh giá Sản Phẩm</div>
+                    <h5 className="title title--comment" style={{paddingTop: '3rem'}}>Bình Luận</h5>
                     <ul className="comment">
                         <li className="comment__item">
-                            <div className="name">Aman gupta</div>
-                            <div className="start">
-                                <AiFillStar />
-                                <AiFillStar />
-                                <AiFillStar />
-                                <AiFillStar />
-                                <AiFillStar />
-                            </div>
-                            <p>I've been using this cleanser for about five or six months now and my acne
-                                is almost completely gone. I really struggled for years with my skin and tried
-                                everything possible but this is the only thing that managed to clear up my
-                                skin. 100% recommend and will continue to use is for sure.</p>
-                        </li>
-                        <li className="comment__item">
-                            <div className="name">Aman gupta</div>
-                            <div className="start">
-                                <AiFillStar />
-                                <AiFillStar />
-                                <AiFillStar />
-                                <AiFillStar />
-                                <AiFillStar />
-                            </div>
-                            <p>I've been using this cleanser for about five or six months now and my acne
-                                is almost completely gone. I really struggled for years with my skin and tried
-                                everything possible but this is the only thing that managed to clear up my
-                                skin. 100% recommend and will continue to use is for sure.</p>
-                        </li>
-                        <li className="comment__item">
-                            <div className="name">Aman gupta</div>
-                            <div className="start">
-                                <AiFillStar />
-                                <AiFillStar />
-                                <AiFillStar />
-                                <AiFillStar />
-                                <AiFillStar />
-                            </div>
+                            <Link className="user flex">
+                                <h4 className="name">Aman gupta</h4>
+                                <div className="start">
+                                    <AiFillStar className='icon'/>
+                                    <AiFillStar className='icon'/>
+                                    <AiFillStar className='icon'/>
+                                    <AiFillStar className='icon'/>
+                                    <AiFillStar className='icon'/>
+                                </div>
+                            </Link>
                             <p>I've been using this cleanser for about five or six months now and my acne
                                 is almost completely gone. I really struggled for years with my skin and tried
                                 everything possible but this is the only thing that managed to clear up my

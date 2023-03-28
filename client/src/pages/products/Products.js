@@ -67,17 +67,19 @@ function Products() {
               {
                 products.map((product, index) =>
                   <li key={index} className="products__item">
-                    <div style={{ backgroundImage: `url(${product.image})` }} className="products__item--img"></div>
-                    <div className="detail">
-                      <h4>{product.name}</h4>
-                      <p>mo ta san pham</p>
-                      <div>
-                        <span>$ {product.priceNew}</span>
-                        <div className="icon">
-                          <AiTwotoneShopping style={{ verticalAlign: '-.3rem' }} />
+                    <Link to={`/products/detail?id=${product._id}`}>
+                      <div style={{ backgroundImage: `url(${product.image})` }} className="products__item--img"></div>
+                      <div className="detail">
+                        <h4>{product.name}</h4>
+                        <p>mo ta san pham</p>
+                        <div>
+                          <span>$ {product.priceNew}</span>
+                          <div className="icon">
+                            <AiTwotoneShopping style={{ verticalAlign: '-.3rem' }} />
+                          </div>
                         </div>
                       </div>
-                    </div>
+                    </Link>
                   </li>
                 )
               }

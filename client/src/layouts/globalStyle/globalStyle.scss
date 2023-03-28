@@ -15,8 +15,10 @@
     --color-bg-pagination: #968e8e;
     --color-footer: #053D29;
     --color-footer2: #062F21;
-    --color-border: #E3E3E3;
+    --color-discount: #FFEDE0;
+    --color-border: #858282;
     --color-green: #12651a;
+    --color-green2: #4E7C32;
     --color-title: #505F4E;
     --color-scrollbar: #505F4E;
     --color-slideBtn: #dce0e3;
@@ -95,8 +97,17 @@ a[href] {
     }
 }
 .button2 {
-    
+    cursor: pointer;
+    background-color: var(--color-green);
+    width: fit-content;
+    padding: 0 1rem;
+    border-radius: var(--border-rd8);
+    color: var(--color-text-white);
+    &:hover {
+        background-color: var(--color-green2);
+    }
 }
+
 .title {
     font-size: var(--font-size-title-mid);
     color: var(--color-title);

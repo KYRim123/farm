@@ -28,7 +28,7 @@ class ProductController {
    }
 
    detail(req, res, next) {
-      productModel.findOne({ _id: req.query.id })
+      productModel.findOne({_id: req.query.id})
          .then(detail => res.status(200).json(detail))
          .catch(next)
    }

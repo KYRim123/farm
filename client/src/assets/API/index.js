@@ -7,3 +7,5 @@ export const fetchProducts = (payload) => {
     payload.classify.forEach(cly => {newURL += `&classify=${cly}`})
     return axios.get(newURL)
 }
+
+export const fetchProductsDetail = (id) => axios.get(`${URL}/products/detail?id=${id}`)

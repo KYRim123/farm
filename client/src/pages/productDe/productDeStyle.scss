@@ -1,0 +1,119 @@
+.productDetail {
+    padding-top: 10rem;
+}
+.product {
+    justify-content: space-between;
+    .show-img {
+        .img-main {
+            width: 35.5rem;
+            height: 35.5rem;
+            object-fit: cover;
+        }
+        .img-others {
+            padding: 1rem;
+            img {
+                margin-right: 2rem;
+                cursor: pointer;
+                width: 10.6rem;
+                height: 10.6rem;
+                &.active {
+                    border: 1px solid var(--color-border);
+                    border-radius: var(--border-rd3);
+                }
+            }
+        }
+        
+    }
+    .information {
+        max-width: 45rem;
+        width: 100%;
+        span {
+             text-transform: uppercase;
+            color: var(--color-green2);
+        }
+        h3 {
+            padding: 1.5rem 0;
+        }
+        .price-new {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--color-black);
+        }
+        .discount {
+            margin-left: 1rem;
+            padding: 0 1rem;
+            background-color: var(--color-discount);
+            color: var(--color-green2);
+            border-radius: var(--border-rd3);
+        }
+        .price-old {
+            float: none;
+            font-weight: 700;
+            padding-bottom: 1rem;
+        }
+        .total{
+            background-color: #F7F8FD;
+            width: 15.7rem;
+            align-items: center;
+            justify-content: space-around;
+            border: var(--border-rd3);
+            span {
+                font-weight: 700;
+            }
+            .icon {
+                color: var(--color-black);
+                font-weight: 700;
+                cursor: pointer;
+             }
+        }
+    }
+}
+.detail {
+    padding-top: 8rem;
+    padding-bottom: 2rem;
+    .about {
+        padding-top: 3rem;
+    }
+    .evaluate{
+        padding-top: 5rem;
+        .wrapper {
+            justify-content: center;
+        }
+        img {
+            width: 35.5rem;
+            height: 35.5rem;
+            object-fit: cover;
+        }
+    }
+    
+    .start__item {
+        span{
+            font-size: 2.5rem;
+        }
+        .icon {
+            font-size: 3rem;
+            vertical-align: -6px;
+            color: var(--color-black);
+            margin: 0 1rem;
+        }
+    }
+    .title--comment {
+        padding-bottom: 2rem;
+    }
+    .comment {
+        .name {
+            color: var(--color-green);
+        }
+        .icon {
+            color: var(--color-black);
+            margin-left: 1rem;
+        }
+        p {
+            padding: 0.5rem 0;
+        }
+
+    }
+    .button2 {
+        margin: 2rem auto 0;
+    }
+}

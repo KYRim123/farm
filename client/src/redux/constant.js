@@ -4,5 +4,6 @@ export const INIT_STATE = {
         listProducts: [],
         classify: [],
         countPage: 1,
+        slug: ''
     }
 }

@@ -80,6 +80,9 @@
      .products__item {
         border-radius: var(--border-rd8);
         background-color: var(--color-bg-product);
+        a {
+            color: var(--color-text-black);
+        }
         .products__item--img {
             padding-top: 100%;
             background-repeat: no-repeat;
