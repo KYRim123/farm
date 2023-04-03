@@ -24,7 +24,7 @@ class ProductController {
          .catch(error => error)
 
       Promise.all([countPage, getProducts])
-         .then(values => res.status(200).json({ countPage: values[0], products: values[1] }))
+         .then(([countPage, products]) => res.status(200).json({ countPage, products}))
    }
 
    detail(req, res, next) {

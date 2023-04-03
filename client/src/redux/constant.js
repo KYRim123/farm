@@ -5,5 +5,8 @@ export const INIT_STATE = {
         classify: [],
         countPage: 1,
         slug: ''
-    }
+    },
+    carts: {
+        listProducts: []
+    } 
 }

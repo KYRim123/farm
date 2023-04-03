@@ -1,21 +1,29 @@
 import React, { useEffect, useState } from 'react'
+import './productDeStyle.scss'
+
 import { RxMinus } from 'react-icons/rx'
 import { RiAddFill } from 'react-icons/ri'
 import { AiFillStar } from 'react-icons/ai'
+
+import {BsFillCartPlusFill} from 'react-icons/bs'
 import {Link, useSearchParams} from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+
 import {fetchProductsDetail} from '../../assets/API'
-import './productDeStyle.scss'
+import * as action from '../../redux/action'
 
 function ProductDe() {
-    const [total, setTotal] = useState(1)
     const [searchParams, setSearchParams] = useSearchParams();
-    const [data, setData] = useState({})
+    const [qty, setQty] = useState(1)
+    const [data, setData] = useState()
+    const dispatch = useDispatch()
+
     const minus = () => {
-        total > 1 ? setTotal(total => total - 1) : setTotal(1)
+        qty > 1 ? setQty(qty => qty - 1) : setQty(1)
     }
 
-    const addTotal = () => {
-        setTotal(total => total + 1)
+    const addQty = () => {
+        setQty(qty => qty + 1)
     }
 
     useEffect(() => {
@@ -24,6 +32,10 @@ function ProductDe() {
             .then(res => setData(res.data))
             .catch(() => console.log("fetch product is failure!"))
     }, [])
+
+    const handleAddCart = () => {
+       dispatch(action.addProductCart.addProductCartRequest({...data, qty}))
+    }
 
     return (
         data && <div className='productDetail'>
@@ -50,11 +62,22 @@ function ProductDe() {
                             <div className='discount'>50%</div>
                         </div>
                         <div className="price-old">$250.00</div>
-                        <div className="total flex">
-                            <div onClick={() => { minus() }}><RxMinus className='icon'/></div>
-                            <span>{total}</span>
-                            <div onClick={() => { addTotal() }}><RiAddFill className='icon'/></div>
+                        <div className='addCart flex'>
+                            <div className="qty flex">
+                                <div onClick={() => { minus() }}>
+                                    <RxMinus className='icon'/>
+                                </div>
+                                <span>{qty}</span>
+                                <div onClick={() => { addQty() }}>
+                                    <RiAddFill className='icon'/>
+                                </div>
+                            </div>
+                            <div className="button2" onClick={handleAddCart}>
+                                <BsFillCartPlusFill className='icon icon-cart'/>
+                                <span>add to cart</span>
+                            </div>
                         </div>
+
                     </div>
                 </div>
 
@@ -76,7 +99,7 @@ function ProductDe() {
                     <div className="evaluate">
                         <div className="wrapper flex" style={{alignItems: 'center'}}>
                             <img src={data.image} alt="" />
-                            <div className="star">
+                            <div className="evaluate-start">
                                 <div className="star-5 start__item">
                                     <span>5</span>
                                     <AiFillStar className='icon'/>

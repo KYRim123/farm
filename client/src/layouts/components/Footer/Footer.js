@@ -11,8 +11,7 @@ import {imgPay} from '../../../assets/images'
       <div className="footer-container grid wide">
         <div className="column column1">
           <p>Khách hàng là rất quan trọng, khách hàng sẽ được theo dõi
-            nhưng điều tương tự cũng xảy ra cùng lúc với lao động và
-            với một số nỗi đau lớn</p>
+            nhưng điều tương tự cũng xảy ra cùng lúc với lao động</p>
             <div className="list-icon">
                 <Link to="/">
                   <BsFacebook className='icon'/>

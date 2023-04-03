@@ -22,5 +22,24 @@ export const changeClassify = createActions({
     changeClassifyFailure: (err => err),
 })
 
+export const fetchCart = createActions({
+   fetchCartRequest: undefined,
+   fetchCartSuccess: (payload => payload),
+   fetchCartFailure: (err => err),
+})
+
+export const addProductCart = createActions({
+    addProductCartRequest: (payload => payload),
+    addProductCartSuccess: (payload => payload),
+    addProductCartFailure: (err => err),
+})
+
+export const updateProductCart = createActions({
+    updateProductCartRequest: (payload => payload),
+    updateProductCartSuccess: (payload => payload),
+    updateProductCartFailure: (err => err),
+})
+
+
 
 
