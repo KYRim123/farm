@@ -53,9 +53,12 @@ export function cartReducers(state = INIT_STATE.carts, action){
         }
 
         case getTypeActions(updateProductCart.updateProductCartSuccess): {
+             const updateListProducts = state.listProducts.map(product => 
+                product._id === action.payload._id ? {...product, qty: action.payload.qty, total: action.payload.total} : {...product}
+            )
             return {
                 ...state,
-                listProducts: [...state.listProducts, action.payload]
+                listProducts: [...updateListProducts]
             }
         }
 

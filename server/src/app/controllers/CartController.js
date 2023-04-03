@@ -19,7 +19,7 @@ class CartController {
 
     updateProductCart(req, res, next) {
         cartModel.updateOne({_id: req.params.id}, req.body)
-            .then(() => res.redirect('back'))
+            .then(() => res.send('thanh cong'))
             .catch(next)
     }
 

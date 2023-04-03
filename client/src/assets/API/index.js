@@ -12,7 +12,7 @@ export const fetchProductsDetail = id => axios.get(`${URL}/products/detail?id=${
 
 export const fetchProductCart = () => axios.get(`${URL}/cart`)
 
-export const addProductCart = (payload) => axios.post(`${URL}/cart/addCart`, payload)
+export const addProductCart = (payload) => axios.post(`${URL}/cart/add`, payload)
 
-export const updateProductCart = (payload) => axios.patch(`${URL}/cart/${payload._id}`, payload)
+export const updateProductCart = (payload) => axios.patch(`${URL}/cart/update/${payload._id}`, payload)
  

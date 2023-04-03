@@ -4,8 +4,8 @@ import { fetchProducts, fetchProductCart, addProductCart, updateProductCart } fr
  // products
 function* fetchProductsSaga(actions) {
     try {
-        const products = yield call(fetchProducts, actions.payload)
-        yield put(action.getProducts.getProductsSuccess(products.data))
+        const getProducts = yield call(fetchProducts, actions.payload)
+        yield put(action.getProducts.getProductsSuccess(getProducts.data))
     } catch (error) {
         yield put(action.getProducts.getProductsFailure(error))
     }
@@ -30,7 +30,11 @@ function* changeClassifySaga(actions) {
 function* fetchCartSaga(actions) {
     try {
         const cart = yield call(fetchProductCart)
-        yield put(action.fetchCart.fetchCartSuccess(cart.data))
+        
+        const updateCart = cart.data.map(product => 
+            product.qty >= 1 ? {...product, total: parseInt(product.price) * parseInt(product.qty)} : {...product})
+
+         yield put(action.fetchCart.fetchCartSuccess(updateCart))
     } catch (error) {
         yield put(action.fetchCart.fetchCartFailure(error))
     }
@@ -47,9 +51,10 @@ function* addProductCartSaga(actions) {
 
 function* updateProductCartSaga(actions) {
     try {
-        const product = yield call(updateProductCart, actions.payload)
-        console.log(product);
-        // yield put(action.updateProductCart.updateProductCartSuccess(product.data))
+        yield call(updateProductCart, actions.payload)
+        const newTotal = parseInt(actions.payload.price) * parseInt(actions.payload.qty)
+        const update = {...actions.payload, total: newTotal}
+        yield put(action.updateProductCart.updateProductCartSuccess(update))
        } catch (error) {
         yield put(action.updateProductCart.updateProductCartFailure(error))
     }
