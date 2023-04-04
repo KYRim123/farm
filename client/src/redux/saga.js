@@ -53,7 +53,7 @@ function* fetchCartSaga(actions) {
 function* addProductCartSaga(actions) {
     try {
         const qtyCart = yield call(addProductCart, actions.payload)
-         yield put(action.addProductCart.addProductCartSuccess(qtyCart.data))
+        yield put(action.addProductCart.addProductCartSuccess(qtyCart.data))
     } catch (error) {
         yield put(action.addProductCart.addProductCartFailure(error))
     }

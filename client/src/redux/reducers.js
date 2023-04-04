@@ -81,7 +81,8 @@ export function cartReducers(state = INIT_STATE.carts, action){
             const listProducts = state.listProducts.filter(item => item._id !== action.payload)
             return {
                 ...state,
-                listProducts
+                listProducts,
+                qtyCart: listProducts.length
             }
         }
 
