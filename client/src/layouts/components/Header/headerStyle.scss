@@ -61,6 +61,18 @@
                 color: var(--color-text-white);
             }
         }
+        .cart {
+            position: relative;
+            .qtyCart{
+                position: absolute;
+                top: -1.7rem;
+                right: -1.5rem;
+                background: var(--color-qtyCart);
+                color: var(--color-text-white);
+                padding: 0 0.8rem;
+                border-radius: 50%;
+            }
+        }
     }
 }
 

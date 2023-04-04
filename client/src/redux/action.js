@@ -3,6 +3,12 @@ import {createActions} from 'redux-actions'
 export const getTypeActions = (reduxActions) => {
     return reduxActions().type
 }
+// home
+export const getQtyCart = createActions({
+    getQtyCartRequest: undefined,
+    getQtyCartSuccess: (payload => payload),
+    getQtyCartFailure: (err => err),
+})
 //action for page products
 export const getProducts = createActions({
     getProductsRequest: (payload => payload),
@@ -38,6 +44,12 @@ export const updateProductCart = createActions({
     updateProductCartRequest: (payload => payload),
     updateProductCartSuccess: (payload => payload),
     updateProductCartFailure: (err => err),
+})
+
+export const deleteProductCart = createActions({
+    deleteProductCartRequest: (payload => payload),
+    deleteProductCartSuccess: (payload => payload),
+    deleteProductCartFailure: (err => err),
 })
 
 

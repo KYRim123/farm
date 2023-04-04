@@ -7,10 +7,11 @@ import { useDispatch, useSelector } from 'react-redux'
 import * as action from '../../redux/action'
 import { getCartSelector } from '../../redux/selector'
 
+
+
 function Cart() {
   const dispatch = useDispatch()
   const data = useSelector(getCartSelector)
-
 
   const minus = (product) => {
     const newQty =  product.qty > 1 ?  product.qty - 1 : 1
@@ -21,6 +22,10 @@ function Cart() {
     const newQty = product.qty + 1
     dispatch(action.updateProductCart.updateProductCartRequest({...product, qty: newQty}))
    }
+
+  const deleteProduct = (id) => {
+      dispatch(action.deleteProductCart.deleteProductCartRequest(id))
+  }
 
   useEffect(() => {
     dispatch(action.fetchCart.fetchCartRequest())
@@ -63,7 +68,7 @@ function Cart() {
                     $ {product.total}
                   </td>
                   <td>
-                    <AiOutlineClose className='cart--deleteItem' />
+                    <AiOutlineClose className='cart--deleteItem' onClick={() => deleteProduct(product._id)}/>
                   </td>
                 </tr>)
             }

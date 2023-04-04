@@ -7,6 +7,7 @@ export const INIT_STATE = {
         slug: ''
     },
     carts: {
-        listProducts: []
+        listProducts: [],
+        qtyCart: 0,
     } 
 }

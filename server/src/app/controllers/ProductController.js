@@ -18,8 +18,8 @@ class ProductController {
       const getProducts = productModel.find({})
          .where('typePot')
          .in([...classify])
-         .limit(limit).skip((page - 1) * limit)
          .sort(sortBy !== "default" ? { priceNew: sortBy } : {})
+         .limit(limit).skip((page - 1) * limit)
          .then(products => products)
          .catch(error => error)
 

@@ -1,6 +1,6 @@
 import {INIT_STATE} from './constant'
 import {combineReducers} from 'redux'
-import {getTypeActions, getProducts, getClassify, changeClassify, fetchCart, updateProductCart} from './action'
+import { getQtyCart, addProductCart, getTypeActions, getProducts, getClassify, changeClassify, fetchCart, updateProductCart, deleteProductCart} from './action'
 
 export  function productReducers(state = INIT_STATE.products, action) {
     switch(action.type) 
@@ -45,10 +45,26 @@ export  function productReducers(state = INIT_STATE.products, action) {
 
 export function cartReducers(state = INIT_STATE.carts, action){
     switch(action.type){
+
+        case getTypeActions(getQtyCart.getQtyCartSuccess): {
+            return {
+                ...state,
+                qtyCart: action.payload.qtyCart
+            }
+        }
+
+        case getTypeActions(addProductCart.addProductCartSuccess): {
+            return {
+                ...state,
+                qtyCart: action.payload.qtyCart
+            }
+        }
+
         case getTypeActions(fetchCart.fetchCartSuccess): {
             return {
                 ...state,
-                listProducts: [...action.payload]
+                listProducts: [...action.payload.listCart],
+                qtyCart: action.payload.qtyCart
             }
         }
 
@@ -59,6 +75,13 @@ export function cartReducers(state = INIT_STATE.carts, action){
             return {
                 ...state,
                 listProducts: [...updateListProducts]
+            }
+        }
+        case getTypeActions(deleteProductCart.deleteProductCartSuccess): {
+            const listProducts = state.listProducts.filter(item => item._id !== action.payload)
+            return {
+                ...state,
+                listProducts
             }
         }
 

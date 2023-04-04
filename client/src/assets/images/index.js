@@ -27,7 +27,7 @@ export const popular = [
     { img: require('./imgPopular/img5.png'), name: 'kẹp' },
 ]
 
-export const kategorien = [
+export const categories = [
     { img: require('./imgKategorien/img1.png'), name: 'thắp sáng', total: 50 },
     { img: require('./imgKategorien/img2.png'), name: 'phân bón', total: 20 },
     { img: require('./imgKategorien/img3.png'), name: 'đất & chất nền', total: 40 },

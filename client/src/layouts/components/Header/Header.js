@@ -7,10 +7,13 @@ import { BiShoppingBag } from 'react-icons/bi'
 import icons from '../../../assets/icons'
 import TippyC from '../../../components/TippyC/TippyC'
 import Navbar from '../Navbar/Navbar'
-
+import {useSelector} from 'react-redux'
+import { getQtyCartSelector } from '../../../redux/selector'
 
 
 function Header() {
+    const qtyCart = useSelector(getQtyCartSelector)
+
     return <header className='header'>
         <div className="header-container wide">
             <div className="header--top flex">
@@ -42,6 +45,7 @@ function Header() {
                         </Link>
                     </div>
                     <div className="cart pl-3">
+                        <div className="qtyCart">{qtyCart}</div>
                         <Link to='/cart'>
                             <BiShoppingBag className='icon' />
                             <span>cart</span>
